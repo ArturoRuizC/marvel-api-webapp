@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class MarvelApiService {
   
-  private  url = "http://localhost:8080";
+  private  url = "http://localhost:8080/marvel";
   
   private headers = new HttpHeaders({
     Authorization: 'Basic' + btoa('admin:Bnb988omhj2')
