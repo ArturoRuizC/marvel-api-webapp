@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BitacoraComponent } from './bitacora/bitacora/bitacora.component';
 import { HeroesComponent } from './marvel-heroes/heroes/heroes.component';
-import { HeroeDetalleComponent } from './marvel-heroes/heroe-detalle/heroe-detalle.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -12,8 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     BitacoraComponent,
-    HeroesComponent,
-    HeroeDetalleComponent
+    HeroesComponent
   
   ],
   imports: [

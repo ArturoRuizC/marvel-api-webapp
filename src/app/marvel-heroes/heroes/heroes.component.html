@@ -1,3 +1,35 @@
-<table class="table table-dark table-hover">
+<div id="container-general">
+    <div id="container-heroes">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let heroe of ltsHeroes">
+                    <td>{{ heroe.id }}</td>
+                    <td>{{ heroe.name }}</td>
+                    <td><button class="btn btn-info" (click)="heroeById(heroe.id)">Ver Detalles</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-</table>
+<div class="modal" tabindex="-1" id="heroModal" #heroModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{objHeroe.name}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="imagen-container"><img class="img-thumbnail" src="{{objHeroe.thumbnail.path}}.{{objHeroe.thumbnail.extension}}" alt=""></div>
+                <p id="parrafo-desc">{{objHeroe.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
