@@ -6,13 +6,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class MarvelApiService {
   
-  private  url = "http://ec2-3-142-186-95.us-east-2.compute.amazonaws.com/marvel";
+  private  url = "http://localhost:8080";
   
   private headers = new HttpHeaders({
     Authorization: 'Basic' + btoa('admin:Bnb988omhj2')
   });
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+
+  }
 
   listarHeroes(){
     return  this.http.get(`${this.url}/heroes`);

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'marvel-api-webapp';
+
+  constructor(private router: Router){
+  }
+
+  goToBitacora(): any {
+    this.router.navigate(['bitacora']);
+  }
+
+  goToHeroes(): any {
+    this.router.navigate(['marvel-heroes/heroes']);
+  }
 }

@@ -13,3 +13,26 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+list-level1 {
+    font-size: 18px;
+    font-weight: bold;
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+list-level1>li {
+    margin-bottom: 10px;
+}
+
+.list-level2 {
+    font-size: 16px;
+    font-weight: normal;
+    list-style-type: circle;
+    margin-left: 40px;
+    color: #666;
+}
+
+.list-level2>li {
+    margin-bottom: 5px;
+}

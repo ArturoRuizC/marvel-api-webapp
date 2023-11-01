@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MarvelApiService } from 'src/app/service/marvel-api.service';
 import { Modal } from 'bootstrap';
-import { Heroe } from '../interfaces/heroe.interface';
-import { Thumbnail } from '../interfaces/thumbnail.interfaces';
+import { ComicsItem, EventoItem, Heroe, HistoriasItem, SeriesItem, Thumbnail, Urls } from '../interfaces/heroe.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -19,7 +19,18 @@ export class HeroesComponent  implements OnInit {
   objHeroe!: Heroe;
   heroeEmpty!: Heroe;
   urlImagen!: Thumbnail;
-  constructor(private marvelService: MarvelApiService) {
+  idHeroe!: any;
+
+  ltsItems: EventoItem[] = [];
+  ltsSeriesItem: SeriesItem[] = [];
+  ltsHistoriasItem: HistoriasItem[] = [];
+  ltsComicsItem: ComicsItem[] = []
+  ltsUrls: Urls[] = [];
+
+  constructor(
+    private marvelService: MarvelApiService, 
+    private router: Router
+    ) {
   
     this.urlImagen = {
       path: '',
@@ -30,18 +41,16 @@ export class HeroesComponent  implements OnInit {
       name: '',
       description: '',
       modified: '',
-      thumbnail: this.urlImagen
-
+      thumbnail: this.urlImagen,
     };
 
     this.heroeEmpty = {
       name: '',
       description: '',
       modified: '',
-      thumbnail: this.urlImagen
+      thumbnail: this.urlImagen,
 
     };
-
   }
 
   ngOnInit(): void {
@@ -50,18 +59,26 @@ export class HeroesComponent  implements OnInit {
     });
   }
 
+
   heroeById(id: number): void {
     this.objHeroe = this.heroeEmpty;
     this.marvelService.consultaHeroe(id).subscribe(e => {this.wrapper = e 
+   
       this.objHeroe = this.wrapper.data.results[0];
-      
+      console.log(this.objHeroe);
       if (this.objHeroe.description == '') {
-        this.objHeroe.description = 'Descripcion no disponible'
+        this.objHeroe.description = 'Description not available'
       }
-      
-      console.log(this.objHeroe.name);
+      this.ltsItems = this.wrapper.data.results[0].events.items;
+      this.ltsSeriesItem = this.wrapper.data.results[0].series.items;
+      this.ltsHistoriasItem = this.wrapper.data.results[0].stories.items;
+      this.ltsComicsItem = this.wrapper.data.results[0].comics.items;
+      this.ltsUrls = this.wrapper.data.results[0].urls;
+
+      console.log(this.ltsItems);
       const modal = new Modal(this.heroModal.nativeElement);
       modal.show();
     });
   }
+
 }

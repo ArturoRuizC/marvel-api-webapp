@@ -29,6 +29,42 @@
             <div class="modal-body">
                 <div id="imagen-container"><img class="img-thumbnail" src="{{objHeroe.thumbnail.path}}.{{objHeroe.thumbnail.extension}}" alt=""></div>
                 <p id="parrafo-desc">{{objHeroe.description}}</p>
+
+
+
+                <ul class="list-level1">
+                    <li>
+                        Events
+                        <ul class="nivel-2">
+                            <li *ngFor="let item of ltsItems">{{item.name}}</li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        Series
+                        <ul class="nivel-2">
+                            <li *ngFor="let item of ltsSeriesItem">{{item.name}}</li>
+                        </ul>
+                    </li>
+                    <li>Stories</li>
+                    <ul class="nivel-2">
+                        <li *ngFor="let item of ltsHistoriasItem">{{item.name}}</li>
+                    </ul>
+                    <li>
+                        Comics
+                        <ul class="nivel-2">
+                            <li *ngFor="let item of ltsComicsItem">{{item.name}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Urls
+                        <ul class="nivel-2">
+                            <li *ngFor="let item of ltsUrls">
+                                <a href='{{item.url}}' target="_blank">{{item.type}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
